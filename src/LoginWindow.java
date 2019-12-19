@@ -63,13 +63,17 @@ public class LoginWindow extends JFrame {
                     studentMenu.setVisible(true);
                     closeThisWindow();
                 } else if (selected.equals("教师")) {
-                    LoginErrWindow loginErrWindow = new LoginErrWindow();
-                    loginErrWindow.setVisible(true);
-                    System.out.println(selected + 2);
+                    TeacherMenu teacherMenu = new TeacherMenu();
+                    teacherMenu.setVisible(true);
+                    closeThisWindow();
                 } else if (selected.equals("教务员")) {
-                    System.out.println(selected + 3);
+                    DeanMenu deanMenu = new DeanMenu();
+                    deanMenu.setVisible(true);
+                    closeThisWindow();
                 } else {
-                    System.out.println(selected + 4);
+                    ManagerMenu managerMenu = new ManagerMenu();
+                    managerMenu.setVisible(true);
+                    closeThisWindow();
                 }
             }
         });
@@ -86,10 +90,5 @@ public class LoginWindow extends JFrame {
 
     public void closeThisWindow() {
         this.dispose();
-    }
-
-    public static void main(String[] args) {
-        LoginWindow loginWindow = new LoginWindow();
-        loginWindow.setVisible(true);
     }
 }

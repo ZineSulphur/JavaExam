@@ -3,8 +3,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class StudentMenu extends JFrame {
-    public StudentMenu(){
+public class TeacherMenu extends JFrame {
+    public TeacherMenu(){
         setTitle("学生成绩管理系统");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(600, 200, 300, 200);
@@ -18,8 +18,8 @@ public class StudentMenu extends JFrame {
         container.add(panel);
 
         JButton personalButton = new JButton("个人信息维护");
-        JButton courseButton = new JButton("课程查询");
-        JButton gradeButton = new JButton("成绩查询");
+        JButton courseButton = new JButton("课程登录");
+        JButton gradeButton = new JButton("成绩登录");
         JButton backButton = new JButton("退出登录");
         JPanel buttonPanel = new JPanel();
         Dimension preferredSize = new Dimension(120,25);

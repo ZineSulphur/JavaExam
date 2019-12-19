@@ -10,6 +10,7 @@ public class WelcomeWindow extends JFrame{
         setBounds(600,200,300,200);
         JLabel label = new JLabel("欢迎使用学生成绩管理系统！");
         JButton loginButton = new JButton("登录");
+        JButton exitButton = new JButton("退出");
 
         Container container = getContentPane();
         container.setLayout(new BorderLayout());
@@ -18,6 +19,7 @@ public class WelcomeWindow extends JFrame{
         JPanel panel2 = new JPanel(new FlowLayout(FlowLayout.CENTER));
         panel1.add(label);
         panel2.add(loginButton);
+        panel2.add(exitButton);
         container.add(panel1,"North");
         container.add(panel2,"Center");
 
@@ -27,6 +29,13 @@ public class WelcomeWindow extends JFrame{
                 LoginWindow loginWindow = new LoginWindow();
                 loginWindow.setVisible(true);
                 closeThisWindow();
+            }
+        });
+
+        exitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
             }
         });
     }
