@@ -3,17 +3,17 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class LoginErrWindow extends JFrame {
-    public LoginErrWindow(){
+public class TipWindow extends JFrame {
+    public TipWindow(String tip){
         setTitle("错误");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(600, 200, 200, 100);
+        setBounds(600, 200, 250, 100);
 
         Container container = getContentPane();
         container.setLayout(new GridLayout(2,1));
         JPanel panel1 = new JPanel();
         panel1.setLayout(new FlowLayout(FlowLayout.CENTER));
-        JLabel label = new JLabel("用户名或者密码错误");
+        JLabel label = new JLabel(tip);
         panel1.add(label);
         container.add(panel1);
 
