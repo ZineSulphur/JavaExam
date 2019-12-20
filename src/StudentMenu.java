@@ -46,14 +46,18 @@ public class StudentMenu extends JFrame {
         courseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                ShowCourseWindow showCourseWindow = new ShowCourseWindow(getThis());
+                showCourseWindow.setVisible(true);
+                closeThisWindow();
             }
         });
 
         gradeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                ShowGradeWindow showGradeWindow = new ShowGradeWindow(getThis());
+                showGradeWindow.setVisible(true);
+                closeThisWindow();
             }
         });
 
