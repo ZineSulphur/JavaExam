@@ -21,7 +21,7 @@ public class DeanMenu extends JFrame {
         panel2.setLayout(new FlowLayout(FlowLayout.CENTER));
         JButton personalButton = new JButton("个人信息维护");
         JButton courseButton = new JButton("课程管理");
-        JButton statisticsButton = new JButton("综合设计");
+        JButton statisticsButton = new JButton("综合统计");
         JButton printButton = new JButton("排名及报表打印");
         JButton backButton = new JButton("退出登录");
         Dimension preferredSize = new Dimension(120,25);

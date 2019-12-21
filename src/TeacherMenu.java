@@ -37,8 +37,8 @@ public class TeacherMenu extends JFrame {
         personalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                TeacherInfoWindow teacherInfoWindow = new TeacherInfoWindow(getThis());
-                teacherInfoWindow.setVisible(true);
+                InfoWindow infoWindow = new InfoWindow(getThis());
+                infoWindow.setVisible(true);
                 closeThisWindow();
             }
         });
@@ -46,14 +46,18 @@ public class TeacherMenu extends JFrame {
         courseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                CourseWindow courseWindow = new CourseWindow(getThis());
+                courseWindow.setVisible(true);
+                closeThisWindow();
             }
         });
 
         gradeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                GradeWindow gradeWindow = new GradeWindow(getThis());
+                gradeWindow.setVisible(true);
+                closeThisWindow();
             }
         });
 
