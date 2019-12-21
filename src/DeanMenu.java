@@ -40,7 +40,9 @@ public class DeanMenu extends JFrame {
         personalButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                InfoWindow infoWindow = new InfoWindow(getThis());
+                infoWindow.setVisible(true);
+                closeThisWindow();
             }
         });
 
@@ -78,4 +80,6 @@ public class DeanMenu extends JFrame {
     public void closeThisWindow() {
         this.dispose();
     }
+
+    public DeanMenu getThis() { return this; }
 }
