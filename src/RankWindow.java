@@ -1,18 +1,20 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.Arrays;
 
-public class StatisticWindow extends JFrame {
-    public StatisticWindow(DeanMenu deanMenu, Officer officer) {
+public class RankWindow extends JFrame {
+    public RankWindow(DeanMenu deanMenu, Officer officer) {
         setTitle("学生成绩管理系统");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(600, 200, 400, 200);
+        setBounds(600, 200, 400, 400);
 
         Container container = getContentPane();
         container.setLayout(new BorderLayout());
-        JLabel label = new JLabel("输入课程名称统计");
+        JLabel label = new JLabel("输入课程名称排名");
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout(FlowLayout.CENTER));
         panel.add(label);
@@ -26,17 +28,25 @@ public class StatisticWindow extends JFrame {
         JTextField nameTextField = new JTextField();
         nameTextField.setBounds(80,10,120,20);
         midPanel.add(nameTextField);
-        JLabel numLabel = new JLabel("平均分");
-        numLabel.setBounds(210,10,50,20);
+        JLabel numLabel = new JLabel("排名");
+        numLabel.setBounds(30,30,50,20);
         midPanel.add(numLabel);
-        JTextField numTextField = new JTextField();
-        numTextField.setBounds(240,10,120,20);
-        midPanel.add(numTextField);
+        String[] name = {"学生姓名", "成绩"};
+        DefaultTableModel model = new DefaultTableModel(null, name) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        JTable table = new JTable(model);
+        JScrollPane scrollPane = new JScrollPane(table);
+        scrollPane.setBounds(80, 30, 200, 200);
+        midPanel.add(scrollPane);
         container.add(midPanel,"Center");
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-        JButton searchButton = new JButton("统计");
+        JButton searchButton = new JButton("排名");
         buttonPanel.add(searchButton);
         JButton backButton = new JButton("返回");
         buttonPanel.add(backButton);
@@ -44,11 +54,15 @@ public class StatisticWindow extends JFrame {
 
         searchButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent actionEvent) {
                 try {
-                    numTextField.setText(String.valueOf(officer.statistic(nameTextField.getText())));
-                } catch (SQLException ex) {
-                    ex.printStackTrace();
+                    Grade[] grades = officer.ranking(nameTextField.getText());
+                    DefaultTableModel tableModel = (DefaultTableModel) table.getModel();
+                    for (Grade grade : grades) {
+                        tableModel.addRow(new Object[] {grade.getStudent(), grade.getGrade()});
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
                     TipWindow tipWindow = new TipWindow("系统错误");
                     tipWindow.setVisible(true);
                 }
@@ -57,7 +71,7 @@ public class StatisticWindow extends JFrame {
 
         backButton.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent actionEvent) {
                 deanMenu.setVisible(true);
                 closeThisWindow();
             }

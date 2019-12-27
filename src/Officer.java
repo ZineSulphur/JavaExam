@@ -70,7 +70,7 @@ public class Officer extends Person {
             Grade grade = queryGrade(id);
             grades.add(grade);
         }
-        Grade[] grades1 = (Grade[]) grades.toArray();
+        Grade[] grades1 = grades.toArray(new Grade[0]);
         Comparator<Grade> gradeComparator = new Comparator<Grade>() {
             @Override
             public int compare(Grade o1, Grade o2) {
