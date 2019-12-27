@@ -37,7 +37,7 @@ public class OfficerData {
 
     public String getFaulty(int id) throws SQLException {
         Connection connection = DataBase.getConnection();
-        String sql = "SELECT dfauly FROM dean WHERE dno = ?";
+        String sql = "SELECT dfaulty FROM dean WHERE dno = ?";
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, id);
         ResultSet resultSet = preparedStatement.executeQuery();
