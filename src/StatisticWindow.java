@@ -21,7 +21,7 @@ public class StatisticWindow extends JFrame {
         JPanel midPanel = new JPanel();
         midPanel.setLayout(null);
         JLabel nameLabel = new JLabel("课程名称");
-        nameLabel.setBounds(30,10,30,20);
+        nameLabel.setBounds(30,10,50,20);
         midPanel.add(nameLabel);
         JTextField nameTextField = new JTextField();
         nameTextField.setBounds(80,10,120,20);

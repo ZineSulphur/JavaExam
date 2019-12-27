@@ -83,7 +83,9 @@ public class DeanMenu extends JFrame {
         printButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                RankWindow rankWindow = new RankWindow(getThis(), getOfficer());
+                rankWindow.setVisible(true);
+                closeThisWindow();
             }
         });
 
