@@ -87,7 +87,7 @@ public class InfoWindow extends JFrame {
                     try {
                         student.setName(nameTextField.getText());
                         student.setSex(String.valueOf(sexComboBox.getSelectedItem()));
-                        student.setBirthday(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH));
+                        student.setBirthday(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1);
                         student.setFaulty(schoolTextField.getText());
                         student.setMajor(majorTextField.getText());
                         TipWindow tipWindow = new TipWindow("保存成功");
@@ -354,7 +354,7 @@ public class InfoWindow extends JFrame {
                             if(student != null) {
                                 student.setName(nameTextField.getText());
                                 student.setSex(String.valueOf(sexComboBox.getSelectedItem()));
-                                student.setBirthday(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH));
+                                student.setBirthday(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1);
                                 student.setFaulty(schoolTextField.getText());
                                 student.setMajor(majorTextField.getText());
                                 TipWindow tipWindow = new TipWindow("新建成功");
@@ -407,7 +407,7 @@ public class InfoWindow extends JFrame {
                             Student student = admin.changeStudent(Integer.parseInt(numTextField.getText()));
                             student.setName(nameTextField.getText());
                             student.setSex(String.valueOf(sexComboBox.getSelectedItem()));
-                            student.setBirthday(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH));
+                            student.setBirthday(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1);
                             student.setFaulty(schoolTextField.getText());
                             student.setMajor(majorTextField.getText());
                             TipWindow tipWindow = new TipWindow("保存成功");
