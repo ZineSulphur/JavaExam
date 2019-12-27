@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
 public class LoginWindow extends JFrame {
     public LoginWindow() {
@@ -19,7 +20,7 @@ public class LoginWindow extends JFrame {
         JPasswordField passwordField = new JPasswordField();
         JButton loginButton = new JButton("登录");
         JButton backButton = new JButton("返回");
-        JComboBox userKindComboBox = new JComboBox();
+        JComboBox<String> userKindComboBox = new JComboBox<>();
 
         JPanel titlePanel = new JPanel();
         titlePanel.setLayout(new FlowLayout());
@@ -58,22 +59,57 @@ public class LoginWindow extends JFrame {
                 String username = usernameTextField.getText();
                 String password = String.valueOf(passwordField.getPassword());
                 String selected = String.valueOf(userKindComboBox.getSelectedItem());
-                if (selected.equals("学生")) {
-                    StudentMenu studentMenu = new StudentMenu();
-                    studentMenu.setVisible(true);
-                    closeThisWindow();
-                } else if (selected.equals("教师")) {
-                    TeacherMenu teacherMenu = new TeacherMenu();
-                    teacherMenu.setVisible(true);
-                    closeThisWindow();
-                } else if (selected.equals("教务员")) {
-                    DeanMenu deanMenu = new DeanMenu();
-                    deanMenu.setVisible(true);
-                    closeThisWindow();
-                } else {
-                    ManagerMenu managerMenu = new ManagerMenu();
-                    managerMenu.setVisible(true);
-                    closeThisWindow();
+                try {
+                    switch (selected) {
+                        case "学生":
+                            Student student = new Student();
+                            if (student.login(username, password)) {
+                                StudentMenu studentMenu = new StudentMenu(student);
+                                studentMenu.setVisible(true);
+                                closeThisWindow();
+                            } else {
+                                TipWindow tipWindow = new TipWindow("用户名或密码错误");
+                                tipWindow.setVisible(true);
+                            }
+                            break;
+                        case "教师":
+                            Teacher teacher = new Teacher();
+                            if (teacher.login(username, password)) {
+                                TeacherMenu teacherMenu = new TeacherMenu(teacher);
+                                teacherMenu.setVisible(true);
+                                closeThisWindow();
+                            } else {
+                                TipWindow tipWindow = new TipWindow("用户名或密码错误");
+                                tipWindow.setVisible(true);
+                            }
+                            break;
+                        case "教务员":
+                            Officer officer = new Officer();
+                            if (officer.login(username, password)) {
+                                DeanMenu deanMenu = new DeanMenu(officer);
+                                deanMenu.setVisible(true);
+                                closeThisWindow();
+                            } else {
+                                TipWindow tipWindow = new TipWindow("用户名或密码错误");
+                                tipWindow.setVisible(true);
+                            }
+                            break;
+                        default:
+                            Admin admin = new Admin();
+                            if (admin.login(username, password)) {
+                                ManagerMenu managerMenu = new ManagerMenu(admin);
+                                managerMenu.setVisible(true);
+                                closeThisWindow();
+                            } else {
+                                TipWindow tipWindow = new TipWindow("用户名或密码错误");
+                                tipWindow.setVisible(true);
+                            }
+                            break;
+                    }
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                    TipWindow tipWindow = new TipWindow("系统错误");
+                    tipWindow.setVisible(true);
                 }
             }
         });
