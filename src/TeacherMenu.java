@@ -15,11 +15,11 @@ public class TeacherMenu extends JFrame {
 
         JLabel label = new JLabel("欢迎使用学生成绩管理系统！");
         Container container = getContentPane();
-        container.setLayout(new GridLayout(2, 1));
+        container.setLayout(new BorderLayout());
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout(FlowLayout.CENTER));
         panel.add(label);
-        container.add(panel);
+        container.add(panel, "North");
 
         JButton accountButton = new JButton("管理账号");
         JButton personalButton = new JButton("个人信息维护");
@@ -39,7 +39,7 @@ public class TeacherMenu extends JFrame {
         buttonPanel.add(courseButton);
         buttonPanel.add(gradeButton);
         buttonPanel.add(backButton);
-        container.add(buttonPanel);
+        container.add(buttonPanel, "Center");
 
         accountButton.addActionListener(new ActionListener() {
             @Override
