@@ -54,14 +54,14 @@ public class Admin extends Person {
 
     public boolean changeAccount(String userName, String newUserName, String password) throws SQLException {
         AccountData data = new AccountData();
-        if(newUserName != null) {
+        if(!newUserName.isEmpty()) {
             if(data.checkUserName(newUserName)) {
                 data.setUserName(userName, newUserName);
             } else {
                 return false;
             }
         }
-        if(password != null) {
+        if(!password.isEmpty()) {
             data.setPassword(userName, password);
         }
         return true;

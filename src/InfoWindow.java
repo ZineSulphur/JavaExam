@@ -566,6 +566,8 @@ public class InfoWindow extends JFrame {
                         if(officer != null) {
                             officer.setName(nameTextField.getText());
                             officer.setFaulty(schoolTextField.getText());
+                            TipWindow tipWindow = new TipWindow("新建成功");
+                            tipWindow.setVisible(true);
                         } else {
                             TipWindow tipWindow = new TipWindow("职工编号已存在");
                             tipWindow.setVisible(true);

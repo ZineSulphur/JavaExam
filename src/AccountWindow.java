@@ -53,8 +53,8 @@ public class AccountWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    if(!newUsernameLabel.getText().isEmpty()) {
-                        if (student.changeUserName(newUsernameLabel.getText())) {
+                    if(!newUsernameTextField.getText().isEmpty()) {
+                        if (student.changeUserName(newUsernameTextField.getText())) {
                             usernameTextField.setText(student.getUserName());
                             TipWindow tipWindow = new TipWindow("更改用户名成功");
                             tipWindow.setVisible(true);
@@ -133,8 +133,8 @@ public class AccountWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    if(!newUsernameLabel.getText().isEmpty()) {
-                        if (teacher.changeUserName(newUsernameLabel.getText())) {
+                    if(!newUsernameTextField.getText().isEmpty()) {
+                        if (teacher.changeUserName(newUsernameTextField.getText())) {
                             usernameTextField.setText(teacher.getUserName());
                             TipWindow tipWindow = new TipWindow("更改用户名成功");
                             tipWindow.setVisible(true);
@@ -213,8 +213,8 @@ public class AccountWindow extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    if(!newUsernameLabel.getText().isEmpty()) {
-                        if (officer.changeUserName(newUsernameLabel.getText())) {
+                    if(!newUsernameTextField.getText().isEmpty()) {
+                        if (officer.changeUserName(newUsernameTextField.getText())) {
                             usernameTextField.setText(officer.getUserName());
                             TipWindow tipWindow = new TipWindow("更改用户名成功");
                             tipWindow.setVisible(true);
@@ -350,7 +350,7 @@ public class AccountWindow extends JFrame {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     try {
-                        if(admin.changeAccount(usernameTextField.getText(), newUsernameTextField.getName(), String.valueOf(passwordField.getPassword()))) {
+                        if(admin.changeAccount(usernameTextField.getText(), newUsernameTextField.getText(), String.valueOf(passwordField.getPassword()))) {
                             TipWindow tipWindow = new TipWindow("更改成功");
                             tipWindow.setVisible(true);
                         } else {

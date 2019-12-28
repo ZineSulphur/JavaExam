@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 public class TipWindow extends JFrame {
     public TipWindow(String tip){
-        setTitle("错误");
+        setTitle("提示");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(600, 200, 250, 100);
 
