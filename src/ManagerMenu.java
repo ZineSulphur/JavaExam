@@ -12,15 +12,15 @@ public class ManagerMenu extends JFrame {
 
         setTitle("学生成绩管理系统");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(600, 200, 300, 300);
+        setBounds(600, 200, 300, 200);
 
         JLabel label = new JLabel("欢迎使用学生成绩管理系统！");
         Container container = getContentPane();
-        container.setLayout(new GridLayout(2,1));
+        container.setLayout(new BorderLayout());
         JPanel panel = new JPanel();
         panel.setLayout(new FlowLayout(FlowLayout.CENTER));
         panel.add(label);
-        container.add(panel);
+        container.add(panel, "North");
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -49,7 +49,7 @@ public class ManagerMenu extends JFrame {
         buttonPanel.add(changeCourse);
         buttonPanel.add(changeGrade);
         buttonPanel.add(backButton);
-        container.add(buttonPanel);
+        container.add(buttonPanel, "Center");
 
         newAccount.addActionListener(new ActionListener() {
             @Override
