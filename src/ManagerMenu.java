@@ -60,6 +60,15 @@ public class ManagerMenu extends JFrame {
             }
         });
 
+        changeAccount.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                AccountWindow accountWindow = new AccountWindow(getThis(), getAdmin(), false);
+                accountWindow.setVisible(true);
+                closeThisWindow();
+            }
+        });
+
         changeStudent.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
